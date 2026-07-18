@@ -1,41 +1,36 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
-import AuthLayout from "../layouts/AuthLayout";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import Dashboard from "../pages/Dashboard";
+import Companies from "../pages/Companies";
+import Jobs from "../pages/Jobs";
+import Applications from "../pages/Applications";
+import NotFound from "../pages/NotFound";
 
-import Login from "../pages/Auth/Login";
-import Register from "../pages/Auth/Register";
-
-import Dashboard from "../pages/Dashboard/Dashboard";
-
-export default function AppRoutes() {
+const AppRoutes = () => {
   return (
-    <BrowserRouter>
-      <Routes>
+    <Routes>
+      {/* Auth */}
+      <Route path="/" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
-        {/* Authentication */}
+      {/* Dashboard */}
+      <Route path="/dashboard" element={<Dashboard />} />
 
-        <Route element={<AuthLayout />}>
+      {/* Company */}
+      <Route path="/companies" element={<Companies />} />
 
-          <Route
-            path="/"
-            element={<Login />}
-          />
+      {/* Jobs */}
+      <Route path="/jobs" element={<Jobs />} />
 
-          <Route
-            path="/register"
-            element={<Register />}
-          />
+      {/* Applications */}
+      <Route path="/applications" element={<Applications />} />
 
-        </Route>
-
-        {/* Dashboard */}
-
-        <Route
-          path="/dashboard"
-          element={<Dashboard />}
-        />
-
-      </Routes>
-    </BrowserRouter>
+      {/* 404 */}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
-}
+};
+
+export default AppRoutes;
